@@ -5,10 +5,12 @@ import math
 
 parser = argparse.ArgumentParser()
 parser.add_argument('X',type=int,help="You to decide how many times to draw")
-parser.add_argument('D',type=str,help="Draw the picture and run the file")
+parser.add_argument('Y',type=int,help="You to decide how many times to draw")
+parser.add_argument('L',type=int,help="You to decide how many times to draw")
 args = parser.parse_args()
 X = args.X
-D = args.D
+Y = args.Y
+L = args.L
 
 def generate_voronoi_diagram(width, height, num_cells):
   image = Image.new("RGB", (width, height))
@@ -40,11 +42,9 @@ def generate_voronoi_diagram(width, height, num_cells):
       putpixel((x, y), (nr[j], ng[j], nb[j]))
 
   image.save("Voronoi.png", "PNG")
-  print("\t\t < Finished drawing!! > \n\t[ Just a moment, please ]\n")
-  if D != '':
-    image.show()
+  image.show()
 
 
 
 if __name__=="__main__":
-  generate_voronoi_diagram(500, 500, X)
+  generate_voronoi_diagram(X, Y, L)
